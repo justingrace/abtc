@@ -1,5 +1,6 @@
 name: apec
 on:
+  push:
   schedule:
     - cron: '0/5 * * * *'
 env:
