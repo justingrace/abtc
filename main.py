@@ -1,3 +1,4 @@
+import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import smtplib
@@ -44,7 +45,10 @@ browser.get("http://allaboutfrogs.org/funstuff/randomfrog.html")
 frog_url = browser.find_element(by=By.TAG_NAME, value="img").get_attribute("src")
 
 
-# 3. Send email
+# 3. Get random dad joke
+joke = requests.get("https://icanhazdadjoke.com", headers={"Accept":"application/json"}).json().get('joke').encode("ascii", "ignore").decode()
+
+# 4. Send email
 
 msg = email.message.Message()
 msg['Subject'] = f'APEC update - {message}'
@@ -54,6 +58,9 @@ msg.set_payload(f"""
                 
                 <p style="padding-top:20px;padding-bottom:2px">Also, here's a frog pic for ya:</p>
                 <img src={frog_url} />
+                <p>------------------------------------------------------------------------------</p>
+                <p>Oh and here's a joke to brighten your day:</p>
+                <p>{joke}</p>
                 
                 """)
 

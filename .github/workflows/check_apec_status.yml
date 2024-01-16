@@ -18,7 +18,11 @@ jobs:
           python-version: '3.x'
       - name: Install dependencies
         run: python -m pip install --upgrade pip selenium wheel
-      - run: python3 main.py
+      - uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 1
+          max_attempts: 3
+          command: python3 main.py
       - name: Commit and push changes
         uses: devops-infra/action-commit-push@master
         with:
