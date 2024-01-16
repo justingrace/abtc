@@ -1,7 +1,7 @@
 name: apec
 on:
   schedule:
-    - cron: "* 18 * * *"
+    - cron: "* * * * *"
 env:
   abtc_application_number: ${{ secrets.ABTC_APPLICATION_NUMBER }}
   gmail_password: ${{ secrets.GMAIL_PASSWORD }}
