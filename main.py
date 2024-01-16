@@ -60,5 +60,5 @@ msg.set_payload(f"""
 s = smtplib.SMTP('smtp.gmail.com', 587)
 s.starttls()
 s.login(gmail_id, gmail_password)
-s.sendmail(gmail_id, to_email_ids, msg.as_string())
+s.sendmail(gmail_id, to_email_ids.split(","), msg.as_string())
 s.quit()
