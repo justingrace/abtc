@@ -31,7 +31,7 @@ old_precleared_countries = open('precleared_countries.txt', 'r').read().split("\
 countries_diff = list(set(current_countries) - set(old_precleared_countries))
 
 if countries_diff:
-    message = f"!!! New APEC countries precleared: {countries_diff}"
+    message = f"!!! New APEC countries precleared: {countries_diff} !!!"
 
     with open('precleared_countries.txt', 'w') as f:
         f.write('\n'.join(current_countries))
