@@ -1,12 +1,12 @@
 name: apec
 on:
   schedule:
-    - cron: "0/5 * * * *"
+    - cron: '0/5 * * * *'
 env:
   abtc_application_number: ${{ secrets.ABTC_APPLICATION_NUMBER }}
   gmail_password: ${{ secrets.GMAIL_PASSWORD }}
   gmail_id : ${{ vars.GMAIL_ID }}
-  to_email_ids: ${{ vars.TO_EMAIL_IDS }}
+  to_email_ids: ${{ secrets.TO_EMAIL_IDS }}
 
 jobs:
   check-apec-status:
