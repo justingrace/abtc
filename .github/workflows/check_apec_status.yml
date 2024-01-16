@@ -1,0 +1,25 @@
+name: apec
+on: [push]
+env:
+  abtc_application_number: ${{ secrets.ABTC_APPLICATION_NUMBER }}
+  gmail_password: ${{ secrets.GMAIL_PASSWORD }}
+  gmail_id : ${{ vars.GMAIL_ID }}
+  to_email_ids: ${{ vars.TO_EMAIL_IDS }}
+
+jobs:
+  check-apec-status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip selenium wheel
+      - run: python3 main.py
+      - name: Commit and push changes
+        uses: devops-infra/action-commit-push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit_message: "[AUTO] Updated countries list"
+      
