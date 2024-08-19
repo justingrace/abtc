@@ -1,6 +1,7 @@
 name: apec
 on:
-  workflow:
+  workflow_dispatch:
+  
 env:
   abtc_application_number: ${{ secrets.ABTC_APPLICATION_NUMBER }}
   gmail_password: ${{ secrets.GMAIL_PASSWORD }}
